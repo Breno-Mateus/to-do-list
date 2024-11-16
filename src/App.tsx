@@ -5,15 +5,17 @@ import { MdDelete } from "react-icons/md"
 import { FcCancel } from "react-icons/fc"
 import { IoIosSave } from "react-icons/io"
 
-import { useTaskManager } from "./hooks/useTaskManager"
-
 import useEditTask from "./hooks/useEditTask"
+import useAddTask from "./hooks/useAddTask"
 
 function App() {
 
   const { tasks, removeTask } = useToDoList()
 
-  const { taskTitle, setTaskTitle, handleAddTask } = useTaskManager()
+  const { 
+    editingState: { taskTitle, setTaskTitle },
+    actions: { handleAddTask },
+  } = useAddTask()
 
   const { 
     editingState: { isEditing, setIsEditing, newTitle, setNewTitle },
