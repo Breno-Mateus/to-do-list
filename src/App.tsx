@@ -7,11 +7,18 @@ import { IoIosSave } from "react-icons/io"
 
 import { useTaskManager } from "./hooks/useTaskManager"
 
+import useEditTask from "./hooks/useEditTask"
+
 function App() {
 
   const { tasks, removeTask } = useToDoList()
 
-  const { taskTitle, setTaskTitle, isEditing, setIsEditing, newTitle, setNewTitle, handleAddTask,handleEdit, startEditing } = useTaskManager()
+  const { taskTitle, setTaskTitle, handleAddTask } = useTaskManager()
+
+  const { 
+    editingState: { isEditing, setIsEditing, newTitle, setNewTitle },
+    actions: { handleEdit, startEditing },
+  } = useEditTask()
 
   return (
     <div className="min-h-screen flex flex-col items-center bg-colorPrimary text-textColor p-8 gap-20">
